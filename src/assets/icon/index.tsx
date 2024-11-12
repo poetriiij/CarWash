@@ -25,7 +25,15 @@ import Mesin from './Mesin.png'
 import Nano from './Nano.png'
 import Salju from './Salju.png'
 import Poles from './Poles.png'
-export {Booking, Pay, Profile, Service
+import Price from './Price.png'
+import Bca from './bca.png'
+import Bni from './bni.png'
+import Dana from './dana.png'
+import Gopay from './gopay.png'
+import Mandiri from './mandiri.png'
+import Shoppe from './shoppe.png'
+export {Price, Bca, Bni,Dana,Gopay,Mandiri,Shoppe,
+    Booking, Pay, Profile, Service
     ,Americano,Affocado,Caramel,MiniCapucino,BackButton, Homelogo, Notiflogo, Orderlogo, Capucino, Heart, Share, Boba, Coffee, Milkshake, Juice, Vector, Exterior,
 Lengkap, Mesin,Nano,Salju,Poles};
 

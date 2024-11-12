@@ -33,28 +33,6 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <View style={styles.footer}>
-        <View style={styles.navigation}>
-          <TouchableOpacity onPress={() => navigation.navigate('Order')}>
-            <View style={styles.footerButton}>
-              <Orderlogo width={-20} />
-              <Text>Order</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <View style={styles.footerButton}>
-              <Homelogo width={-20} />
-              <Text>Home</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-            <View style={styles.footerButton}>
-              <Notiflogo width={-20} />
-              <Text style={styles.addText}>Notification</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
     </ImageBackground>
   );
 };
