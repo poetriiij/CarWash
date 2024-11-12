@@ -1,34 +1,35 @@
-import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import React from 'react';
-import { Boba, Coffee, Milkshake, Juice, Notiflogo, Orderlogo, Homelogo } from '../../assets/icon';
+import { Service, Profile, Pay, Booking, Notiflogo, Orderlogo, Homelogo } from '../../assets/icon';
 import { Gap } from '../../components';
 
 const Home = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <ImageBackground source={require('../../assets/Logo/Homebg.png')} style={styles.background}>
+      <View style={styles.overlay} /> 
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={styles.searchContainer}>
-          <Gap height={20}/>
+          <Gap height={20} />
         </View>
-        <Gap height={58}/>
-        <Text style={styles.categoryText}>MENU</Text>
-        <Gap height={36}/>
+        <Gap height={100} />
+        {/* <Text style={styles.categoryText}>MENU</Text> */}
+        <Gap height={36} />
         <View style={styles.drinkContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkDetail', { drinkType: 'Boba' })} style={styles.drinkItem}>
-            <Image source={Boba} style={styles.drinkImage} />
-            <Text style={styles.drinkText}>Boba</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Service')} style={styles.Item}>
+            <Image source={Service} style={styles.IconIm} />
+            <Text style={styles.Text}>Service</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkDetail', { drinkType: 'Milkshake' })} style={styles.drinkItem}>
-            <Image source={Milkshake} style={styles.drinkImage} />
-            <Text style={styles.drinkText}>Milkshake</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Booking')} style={styles.Item}>
+            <Image source={Booking} style={styles.IconIm} />
+            <Text style={styles.Text}>Booking</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('HomeDrink')} style={styles.drinkItem}>
-            <Image source={Coffee} style={styles.drinkImage} />
-            <Text style={styles.drinkText}>Coffee</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('PaymentPage')} style={styles.Item}>
+            <Image source={Pay} style={styles.IconIm} />
+            <Text style={styles.Text}>Payment</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkDetail', { drinkType: 'Juice' })} style={styles.drinkItem}>
-            <Image source={Juice} style={styles.drinkImage} />
-            <Text style={styles.drinkText}>Juice</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('DrinkDetail')} style={styles.Item}>
+            <Image source={Profile} style={styles.IconIm} />
+            <Text style={styles.Text}>Account</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -54,16 +55,24 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
 export default Home;
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    resizeMode: 'cover', 
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', 
+  },
   container: {
     flex: 1,
-    backgroundColor: '#D6C9E6',
+    backgroundColor: 'transparent', 
   },
   scrollViewContainer: {
     paddingBottom: 60,
@@ -73,13 +82,13 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   categoryText: {
-    color: '#725d8d',
+    color: '#FFFFFF', 
     fontSize: 40,
     fontWeight: '900',
     marginHorizontal: 16,
     marginVertical: 16,
-    textAlign:'center',
-    fontFamily:'RubikBubbles-Regular',
+    textAlign: 'center',
+    // fontFamily: 'RubikBubbles-Regular',
   },
   drinkContainer: {
     flexDirection: 'row',
@@ -87,18 +96,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 16,
   },
-  drinkItem: {
+  Item: {
+    marginTop:60,
     alignItems: 'center',
     marginBottom: 16,
-    width: '48%', // Adjusted width for better layout
+    width: '50%',
   },
-  drinkImage: {
-    width: 140,
-    height: 140,
-    marginBottom: 8,
+  IconIm: {
+    width: 70,
+    height: 70,
+    marginBottom: 18,
   },
-  drinkText: {
-    color: '#8D73D6',
+  Text: {
+    color: '#FFFFFF', 
     fontWeight: 'bold',
   },
   footer: {
@@ -125,4 +135,3 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-

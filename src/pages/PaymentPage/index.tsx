@@ -3,7 +3,7 @@ import React from 'react';
 import { Affocado, Americano, Capucino, Caramel, Homelogo, MiniCapucino, Notiflogo, Orderlogo } from '../../assets/icon';
 import { Gap } from '../../components';
 
-const HomeDrink = ({ navigation }) => {
+const PaymentPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
@@ -72,7 +72,7 @@ const HomeDrink = ({ navigation }) => {
   );
 };
 
-export default HomeDrink;
+export default PaymentPage;
 
 const styles = StyleSheet.create({
   container: {
