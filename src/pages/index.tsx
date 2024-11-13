@@ -7,4 +7,5 @@ import Order from "./Order";
 import PaymentPage from "./PaymentPage";
 import Buy from "./Buy";
 import Service from "./Service";
-export {PaymentPage,Splash, Login, Register, Home, Notification, Order, Buy, Service};
+import Booking from "./Booking";
+export {Booking,PaymentPage,Splash, Login, Register, Home, Notification, Order, Buy, Service};
