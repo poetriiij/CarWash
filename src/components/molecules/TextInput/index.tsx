@@ -11,7 +11,7 @@ const TextInput = ({ placeholder, label,value,
       <Input
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor="#FFFFFF" 
+        placeholderTextColor="#8D92A3" 
         value={value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
@@ -25,18 +25,21 @@ export default TextInput;
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: 16,
-    color: '#725d8d',
+    fontSize: 18,
+    color: '#FFFFFF',
+    fontWeight: '500',
   },
   input: {
-    borderRadius: 6,
-    fontSize: 15,
+    fontSize: 16,
     color: '#FFFFFF',
-    padding: 10,
+    padding: 20,
     marginBottom: 20,
-    backgroundColor: '#725d8d',
-    borderRadius: 7,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
     paddingHorizontal: 10,
-    paddingVertical: 6,
+    paddingVertical: 15,
+    fontWeight: '600',
+    borderColor: '#000',
+    borderWidth: 1.9,
   },
 });

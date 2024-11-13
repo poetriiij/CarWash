@@ -6,15 +6,25 @@ import { Logo } from '../../assets/index';
 const Splash = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>FIND YOUR DRINK</Text>
-      <Image source={Logo} style={styles.logo} />
-      <Gap height={37} />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.buttonText}>LOG IN</Text>
+      <Image source={require('../../assets/icon/HomeCarWash.png')} style={styles.background} />
+      <Gap height={270} />
+      <Text style={styles.title}>WELCOME TO CAR WASH!</Text>
+      <Text style={styles.subtext}>Expert Car Washing</Text>
+      <Text style={styles.subtext}>Service Provider</Text>
+      <Gap height={35} />
+      <TouchableOpacity
+        TouchableOpacity style={[styles.button, styles.buttonDisabled]}
+        onPress={() => navigation.navigate('Login')}
+        disabled={true}>
+        <Text style={styles.buttonTextDisabled}>Booking Now!</Text>
       </TouchableOpacity>
-      <Gap height={40} />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.buttonText}>REGISTER</Text>
+      <Gap height={20} />
+      <TouchableOpacity style={styles.transparentButton} onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
+      <Gap height={10} />
+      <TouchableOpacity style={styles.transparentButton} onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -30,23 +40,47 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', 
   },
   title: {
-    fontSize: 34,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#725d8d'
+    fontSize: 20,
+    marginBottom: 10,
+    color: '#FFFFFF',
   },
-  logo: {
-    width: 200, 
-    height: 200,
+  subtext: {
+    fontSize: 35,
+    color: '#FFFFFF',
+  },
+  background: {
+    width: '100%', 
+    height: '100%', 
+    position: 'absolute',
   },
   button: {
     backgroundColor: '#d9d9d9',
     paddingVertical: 10,
     paddingHorizontal: 50,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#000',
+    alignItems: 'center',
+  },
+  transparentButton: {
+    backgroundColor: 'transparent', 
+    paddingVertical: 7,
+    paddingHorizontal: 15,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#E841D5',
+    alignItems: 'center',
+  },
+  buttonTextDisabled: {
+    fontSize: 23,
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
   },
   buttonText: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#725d8d',
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
 });
