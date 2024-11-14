@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -6,19 +7,10 @@ import {
   View,
   Image,
   TouchableOpacity,
-  TextInput,
+  Modal,
+
 } from 'react-native';
-import React from 'react';
 import {
-  Exterior,
-  Lengkap,
-  Mesin,
-  Nano,
-  Homelogo,
-  Salju,
-  Notiflogo,
-  Orderlogo,
-  Poles,
   Price,
   Dana,
   Shoppe,
@@ -26,10 +18,13 @@ import {
   Mandiri,
   Bca,
   Bni,
+  Check,
 } from '../../assets/icon';
-import {Gap} from '../../components';
+import {Button, Gap} from '../../components';
 
-const PaymentPage = ({navigation}) => {
+const PaymentPage = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <ImageBackground
       source={require('../../assets/Logo/Homebg2.png')}
@@ -39,44 +34,66 @@ const PaymentPage = ({navigation}) => {
         <Gap height={34} />
         <Text style={styles.title}>Payment</Text>
         <Gap height={34} />
-        <View  style={styles.priceimg}>
-        <Image source={Price}/>
+        <View style={styles.priceimg}>
+          <Image source={Price} />
         </View>
         <Gap height={94} />
         <View style={styles.drinkContainer}>
           <View style={styles.drinkItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Image source={Dana} style={styles.drinkImage} />
             </TouchableOpacity>
           </View>
           <View style={styles.drinkItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Image source={Shoppe} style={styles.drinkImage} />
             </TouchableOpacity>
           </View>
           <View style={styles.drinkItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Image source={Gopay} style={styles.drinkImage} />
             </TouchableOpacity>
           </View>
           <View style={styles.drinkItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Image source={Mandiri} style={styles.drinkImage} />
             </TouchableOpacity>
           </View>
           <View style={styles.drinkItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Image source={Bca} style={styles.drinkImage} />
             </TouchableOpacity>
           </View>
           <View style={styles.drinkItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Image source={Bni} style={styles.drinkImage} />
             </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
-      <View style={styles.footer}>
+
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Image source={Check} style={styles.modalImage} />
+            <Text style={styles.modalText}>Pembayaran berhasil!</Text>
+            <Button
+              label="Success!!!"
+              backgroundColor="#FFD5FE"
+              textColor="black"
+              onPress={() =>  navigation.goBack()}
+              style={styles.button}
+            />
+            {/* <Button title="Success" onPress={() => setModalVisible(false)} /> */}
+          </View>
+        </View>
+      </Modal>
+
+      {/* <View style={styles.footer}>
         <View style={styles.navigation}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <View style={styles.footerButton}>
@@ -85,7 +102,7 @@ const PaymentPage = ({navigation}) => {
             </View>
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
     </ImageBackground>
   );
 };
@@ -101,10 +118,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
-  priceimg:{
+  priceimg: {
     alignItems: 'center',
-    justifyContent:'center',
-
+    justifyContent: 'center',
   },
   title: {
     fontSize: 48,
@@ -115,41 +131,14 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     paddingBottom: 60,
   },
-  searchContainer: {
-    paddingHorizontal: 56,
-    paddingVertical: 20,
-  },
-  headerText: {
-    color: '#000',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    textAlign: 'center',
-    fontFamily: 'RubikBubbles-Regular',
-  },
-  searchInput: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 20,
-    // paddingHorizontal: 56,
-    textAlign: 'center',
-    fontWeight: '800',
-    fontSize: 20,
-    paddingVertical: 9,
-  },
-  categoryText: {
-    color: '#000',
-    fontSize: 40,
-    fontWeight: '900',
-    marginHorizontal: 16,
-    marginVertical: 16,
-    textAlign: 'center',
-    fontFamily: 'RubikBubbles-Regular',
-  },
   drinkContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     marginHorizontal: 16,
+  },
+  button: {
+    alignSelf: 'center',
   },
   drinkItem: {
     alignItems: 'center',
@@ -157,14 +146,7 @@ const styles = StyleSheet.create({
     width: '50%',
   },
   drinkImage: {
-    // width: 140,
-    // height: 140,
     marginBottom: 8,
-    // borderRadius: 20,
-  },
-  drinkText: {
-    color: '#ffff',
-    fontWeight: 'bold',
   },
   footer: {
     position: 'absolute',
@@ -176,7 +158,6 @@ const styles = StyleSheet.create({
     borderTopColor: '#ffff',
     elevation: 10,
     borderRadius: 20,
-
   },
   navigation: {
     flexDirection: 'row',
@@ -187,7 +168,27 @@ const styles = StyleSheet.create({
   footerButton: {
     paddingHorizontal: 10,
   },
-  addText: {
-    fontSize: 14,
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalImage: {
+    width: 160,
+    height: 160,
+    marginBottom: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });

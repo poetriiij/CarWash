@@ -1,114 +1,202 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Alert, ImageBackground } from 'react-native';
-import { Button, Gap, TextInput } from '../../components';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../../../config/firebase';
-
-const auth = getAuth(app);
-
-const Login = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onPressLogin = async () => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log('Logged in user:', user);
-      navigation.replace('Home');
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Login failure', error.message);
-    }
-  };
-
-  return (
-    <ImageBackground 
-      source={require('../../assets/icon/AccountPage.png')}
-      style={styles.background}>
-      <View style={styles.overlay} />
-      <View style={styles.container}>
-        <View style={styles.titleContainer}>
+import {
+    ImageBackground,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TouchableOpacity,
+    TextInput,
+  } from 'react-native';
+  import React from 'react';
+  import {
+    Exterior,
+    Lengkap,
+    Mesin,
+    Nano,
+    Homelogo,
+    Salju,
+    Notiflogo,
+    Orderlogo,
+    Poles,
+    Price,
+    Dana,
+    Shoppe,
+    Gopay,
+    Mandiri,
+    Bca,
+    Bni,
+  } from '../../assets/icon';
+  import {Button, Gap} from '../../components';
+  
+  const Booking = ({navigation}) => {
+    return (
+      <ImageBackground
+        source={require('../../assets/Logo/Homebg2.png')}
+        style={styles.background}>
+        <View style={styles.overlay} />
+        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+          <Gap height={34} />
           <Text style={styles.title}>Booking</Text>
+          <Gap height={150} />
+          <View style={styles.drinkContainer}>
+          <Text style={styles.timetop}>Date</Text>
+          <View style={styles.time}>
+            <Text style={styles.text}>11/18/24</Text>
         </View>
-        <Gap height={134} />
-        <View style={styles.contentWrapper}>
-          <TextInput
-            style={styles.input}
-            label="Email"
-            placeholder="Email"
-            onChangeText={setEmail}
-            value={email}
-          />
-          <TextInput
-            style={styles.input}
-            label="Password"
-            placeholder="Password"
-            secureTextEntry
-            onChangeText={setPassword}
-            value={password}
-          />
-          <View style={styles.buttonContainer}>
-            <Button
-              label="Login"
+        <Text style={styles.timetop}>Time</Text>
+        <View style={styles.time}>
+            <Text style={styles.text}>09:22</Text>
+        </View>
+          </View>
+
+        </ScrollView>
+        <Gap height={20} />
+        <View style={styles.buttonContainer}>
+          <Button
+              label="Booking"
               backgroundColor="#FFD5FE"
               textColor="black"
-              onPress={onPressLogin}
+              onPress={() => navigation.navigate('PaymentPage')}
               style={styles.button}
             />
-          </View>
-        </View>
-      </View>
-    </ImageBackground>
-  );
-};
-
-export default Login;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    paddingHorizontal: 20,
-  },
-  titleContainer: {
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 30,
-    color: '#FFFFFF',
-    marginTop: 50,
-    fontWeight: 'bold',
-  },
-  contentWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  input: {
-    marginBottom: 20,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-  },
-  buttonContainer: {
-    alignItems: 'center',
-  },
-  button: {
-    alignSelf: 'center',
-    borderRadius: 10,
-  },
-  background: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-});
+            </View>
+      </ImageBackground>
+    );
+  };
+  
+  export default Booking;
+  
+  const styles = StyleSheet.create({
+    background: {
+      flex: 1,
+      resizeMode: 'cover',
+    },
+    overlay: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    },
+    timetop:{
+        fontWeight: '800',
+        color: '#ffff',
+        fontSize: 16,
+        paddingLeft: '5%',
+    },
+    time: {
+        backgroundColor: '#FFFFFF',     
+        padding: 10,                    
+        borderRadius: 20,               
+        alignItems: 'left',           
+        justifyContent: 'center',       
+        shadowColor: '#000',            
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 2, height: 2 },
+        elevation: 3,                   
+        marginVertical: 20,             
+        width: '100%', 
+        height: '23%',              
+      },
+      text: {
+        textAlign: 'left',
+        fontSize: 15,            
+        color: '#000000',  
+        fontWeight: 'bold',
+        paddingLeft: 20,        
+      },
+    priceimg:{
+      alignItems: 'center',
+      justifyContent:'center',
+    },
+    buttonContainer: {
+        alignItems: 'center', 
+        marginBottom: 180,
+        paddingHorizontal: 40,
+      },
+    button: {
+        alignSelf: 'center',
+      },
+    title: {
+      fontSize: 48,
+      textAlign: 'center',
+      color: '#fff',
+      fontWeight: '400',
+    },
+    scrollViewContainer: {
+      paddingBottom: 60,
+      alignItems: 'center',
+    },
+    searchContainer: {
+      paddingHorizontal: 56,
+      paddingVertical: 20,
+    },
+    headerText: {
+      color: '#000',
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 8,
+      textAlign: 'center',
+      fontFamily: 'RubikBubbles-Regular',
+    },
+    searchInput: {
+      backgroundColor: '#FFFFFF',
+      borderRadius: 20,
+      // paddingHorizontal: 56,
+      textAlign: 'center',
+      fontWeight: '800',
+      fontSize: 20,
+      paddingVertical: 9,
+    },
+    categoryText: {
+      color: '#000',
+      fontSize: 40,
+      fontWeight: '900',
+      marginHorizontal: 16,
+      marginVertical: 16,
+      textAlign: 'center',
+      fontFamily: 'RubikBubbles-Regular',
+    },
+    drinkContainer: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      marginHorizontal: 16,
+    },
+    drinkItem: {
+      alignItems: 'center',
+      marginBottom: '10%',
+      width: '50%',
+    },
+    drinkImage: {
+      // width: 140,
+      // height: 140,
+      marginBottom: 8,
+      // borderRadius: 20,
+    },
+    drinkText: {
+      color: '#ffff',
+      fontWeight: 'bold',
+    },
+    footer: {
+      position: 'absolute',
+      bottom: 30,
+      left: 100,
+      right: 100,
+      backgroundColor: '#eef3fc',
+      borderTopWidth: 1,
+      borderTopColor: '#ffff',
+      elevation: 10,
+      borderRadius: 20,
+    },
+    navigation: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      height: 60,
+    },
+    footerButton: {
+      paddingHorizontal: 10,
+    },
+    addText: {
+      fontSize: 14,
+    },
+  });

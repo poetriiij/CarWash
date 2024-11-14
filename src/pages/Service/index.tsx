@@ -16,8 +16,6 @@ import {
   Nano,
   Homelogo,
   Salju,
-  Notiflogo,
-  Orderlogo,
   Poles,
 } from '../../assets/icon';
 import {Gap} from '../../components';
@@ -86,7 +84,7 @@ const Service = ({navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <View style={styles.navigation}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <View style={styles.footerButton}>
@@ -95,7 +93,7 @@ const Service = ({navigation}) => {
             </View>
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
     </ImageBackground>
   );
 };
