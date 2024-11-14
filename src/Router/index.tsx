@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {Splash, Register, Login, Home, Notification, Order, PaymentPage, Buy, Service, Booking} from '../pages';
+import {Splash, Register, Login, Home, Notification, Order, PaymentPage, Buy, Service, AccountProfile, Booking} from '../pages';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -52,7 +52,12 @@ const index = () => {
         component={Service}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+       <Stack.Screen
+        name="AccountProfile"
+        component={AccountProfile}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
         name="Booking"
         component={Booking}
         options={{headerShown: false}}

@@ -200,4 +200,3 @@ import {
       fontSize: 14,
     },
   });
-  
