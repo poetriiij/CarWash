@@ -27,7 +27,7 @@ const Home = ({ navigation }) => {
             <Image source={Pay} style={styles.IconIm} />
             <Text style={styles.Text}>Payment</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('DrinkDetail')} style={styles.Item}>
+          <TouchableOpacity onPress={() => navigation.navigate('AccountProfile')} style={styles.Item}>
             <Image source={Profile} style={styles.IconIm} />
             <Text style={styles.Text}>Account</Text>
           </TouchableOpacity>
